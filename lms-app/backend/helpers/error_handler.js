@@ -5,7 +5,7 @@ const error_handler_obj = {
     stack: null
 };
 
-const set_error_handler_obj = (status, title, message, stack) => {
+const error_handler_helper = (status, title, message, stack) => {
     error_handler_obj.status = status;
     error_handler_obj.title = title;
     error_handler_obj.message = message;
@@ -13,4 +13,4 @@ const set_error_handler_obj = (status, title, message, stack) => {
     return error_handler_obj;
 };
 
-module.exports = set_error_handler_obj;
+module.exports = error_handler_helper;

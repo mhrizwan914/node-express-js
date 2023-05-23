@@ -4,6 +4,8 @@ const express = require("express");
 require("dotenv").config();
 // Import Middleware For Error Handler
 const error_handler = require("./middleware/error_handler");
+// Import Mongoose
+const mongoose = require("mongoose");
 // Import Student Route
 const student_route = require("./routes/student");
 // Import Teacher Route
@@ -30,10 +32,13 @@ app.use("/api/courses", course_route);
 // Use Middleware For Error Handler
 app.use(error_handler);
 
-// Define Server Port
+// Define Server Port & Database
 const port = process.env.PORT || 3000;
 
-// Listening Server
-app.listen(port, () => {
-    console.log(`Server is Runing Port ${port}`);
+mongoose.connect(process.env.CONNECTION_STRING).then(() => {
+    app.listen(process.env.PORT, () => {
+        console.log(`Database Connected Successfully & Server is Listening on Port ${port}`);
+    });
+}).catch((error) => {
+    console.log(error);
 });
