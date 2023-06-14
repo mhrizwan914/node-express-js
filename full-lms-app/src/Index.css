@@ -1,0 +1,14 @@
+:root {
+    --p-color: #f9a100;
+    --b-color: #000000;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}

@@ -108,11 +108,13 @@ const remove = async (request, response) => {
 const search = async (request, response) => {
     try {
         const { duration } = request.body;
+        response.json(duration);
         if (!duration) {
             response.status(404);
             throw new Error("Search Entity is Required");
         } else {
-            const course_data = await course_model.find({ duration: duration });
+            const course_data = await course_model.find({ duration });
+            console.log(course_data);
             response.status(200).send({
                 status: 200,
                 message: "All Courses Search Successfully",
